@@ -15,7 +15,7 @@ app.use(express.json());
 const pool = new Pool({
   connectionString: "postgresql://sibaath:zVsxEl09tK0jABjbT47KMfPbNRItw1F4@dpg-ct7e2jpu0jms73dpogjg-a.singapore-postgres.render.com/db_talks",
   ssl: {
-    rejectUnauthorized: false 
+    rejectUnauthorized: false  
   }
 });
 
