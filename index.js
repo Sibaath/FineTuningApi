@@ -32,7 +32,11 @@ app.post('/executeQuery', async (req, res) => {
       client = await pool.connect();
       console.log("Database Connected!!!");
       const result = await client.query(query);
-      return res.json(result.rows);
+          // Convert result rows to readable text
+      const readableResult = result.rows.map(row => {
+        return Object.keys(row).map(key => `${key}: ${row[key]}`).join(', ');
+      }).join('\n');
+    return res.send(readableResult);
     } catch (error) {
       console.error('Error executing query:', error.message);
       return res.status(500).json({ error: 'Database query failed', details: error.message });
